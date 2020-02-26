@@ -1,95 +1,109 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>全栈开发实战：基于Vue+Node.js+Mongoodb开发完整的前后端项目 | herry</title>
-<link rel="shortcut icon" href="https://herryle.github.io/favicon.ico?v=1582680033874">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://herryle.github.io/favicon.ico?v=1582680715982">
 <link rel="stylesheet" href="https://herryle.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="全栈开发实战：基于Vue+Node.js+Mongoodb开发完整的前后端项目 | herry - Atom Feed" href="https://herryle.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
 
     <meta name="description" content="项目简介
 前一段时间领导临时给了一个小需求，要做一个简单的会议报表，要满足会议表格内容的增删改查、文件的上传下载以及用户登录验证，于是趁着划水的时间写了一下，看着网上针对这一块的教程不是很多，所以写下了这篇文章，也算是入门全栈开发的一篇基础..." />
     <meta name="keywords" content="" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://herryle.github.io">
-  <img class="avatar" src="https://herryle.github.io/images/avatar.png?v=1582680033874" alt="">
-  </a>
-  <h1 class="site-title">
-    herry
-  </h1>
-  <p class="site-description">
-    万物之中，希望之美
-  </p>
-  <div class="menu-container">
-    
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://herryle.github.io">
+        <img src="https://herryle.github.io/images/avatar.png?v=1582680715982" class="site-logo">
+        <h1 class="site-title">herry</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
       
-        <a href="/" class="menu">
-          首页
-        </a>
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
       
-    
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
       
-        <a href="/archives" class="menu">
-          归档
-        </a>
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
       
-    
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
       
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
+    </div>
   </div>
-  <div class="social-container">
-    
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
       
-    
+        
+          <a class="social-link" href="https://github.com/herryle" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
       
-    
+        
       
-    
+        
       
-    
+        
+          <a class="social-link" href="https://www.zhihu.com/people/lhwei-liao-yi-hou-yao-nu-li" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
       
-    
+        
+      
+    </div>
+    <div class="site-description">
+      万物之中，希望之美
+    </div>
+    <div class="site-footer">
+      Powered by < a href="https://github.com/getgridea/gridea" target="_blank">Gridea</ a> | <a class="rss" href="https://herryle.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
 </div>
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              全栈开发实战：基于Vue+Node.js+Mongoodb开发完整的前后端项目
-            </h2>
-            <div class="post-info">
-              <span>
-                2020-02-25
-              </span>
-              <span>
-                9 min read
-              </span>
-              
-            </div>
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">全栈开发实战：基于Vue+Node.js+Mongoodb开发完整的前后端项目</h2>
+            <div class="post-date">2020-02-25</div>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <h2 id="项目简介">项目简介</h2>
+            <div class="post-content" v-pre>
+              <h2 id="项目简介">项目简介</h2>
 <p>前一段时间领导临时给了一个小需求，要做一个简单的会议报表，要满足会议表格内容的增删改查、文件的上传下载以及用户登录验证，于是趁着划水的时间写了一下，看着网上针对这一块的教程不是很多，所以写下了这篇文章，也算是入门全栈开发的一篇基础文章，大佬勿喷。</p>
 <p>以下是项目地址，希望给个 <code>star</code>，鼓励一下：</p>
 <p><a href="https://github.com/herryle/vue-fight-direct">github地址</a></p>
@@ -392,90 +406,45 @@ module.exports = app =&gt; {
 <p>希望你不吝赐教，可以的话给颗 <code>star</code> 鼓励一下吧：</p>
 <p><a href="https://github.com/herryle/vue-fight-direct">github地址</a></p>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B">项目简介</a></li>
-<li><a href="#%E6%8A%80%E6%9C%AF%E6%A0%88">技术栈</a></li>
-<li><a href="#%E5%89%8D%E7%AB%AF">前端</a></li>
-<li><a href="#%E5%90%8E%E7%AB%AF">后端</a></li>
-<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a></li>
-<li><a href="#%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB">前后端分离</a></li>
-<li><a href="#%E9%A1%B9%E7%9B%AE%E8%AF%A6%E8%BF%B0">项目详述</a></li>
-<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
-</ul>
-</li>
-</ul>
-
-              </div>
             </div>
-          </article>
-        </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://herryle.github.io/post/hello-gridea/">
+                  <h3 class="post-title">
+                    Hello Gridea
+                  </h3>
+                </a>
+              </div>
+            
 
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://herryle.github.io/post/hello-gridea/">
-              <h3 class="post-title">
-                Hello Gridea
-              </h3>
-            </a>
+            
+
           </div>
-        
 
-        
-
-        <div class="site-footer">
-  Powered by < a href="https://github.com/getgridea/gridea" target="_blank">Gridea</ a>
-  <a class="rss" href="https://herryle.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
+        </div>
       </div>
     </div>
 
-    <script>
-      hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
 
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+AOS.init();
 
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
+</script>
 
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
 
-    </script>
+
+
+
+
   </body>
 </html>
