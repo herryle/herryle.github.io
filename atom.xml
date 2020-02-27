@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://herryle.github.io</id>
     <title>herry</title>
-    <updated>2020-02-27T01:31:58.591Z</updated>
+    <updated>2020-02-27T01:34:38.615Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://herryle.github.io"/>
     <link rel="self" href="https://herryle.github.io/atom.xml"/>
@@ -10,6 +10,91 @@
     <logo>https://herryle.github.io/images/avatar.png</logo>
     <icon>https://herryle.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, herry</rights>
+    <entry>
+        <title type="html"><![CDATA[MongoDB设置权限]]></title>
+        <id>https://herryle.github.io/post/101/</id>
+        <link href="https://herryle.github.io/post/101/">
+        </link>
+        <updated>2020-02-27T01:33:08.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="mongodb设置权限">MongoDB设置权限</h1>
+<ol>
+<li>
+<p>输入命令行mongo，进入mongodb环境</p>
+<pre><code class="language-shellsh">mongo
+</code></pre>
+</li>
+<li>
+<p>切换到admin 数据库</p>
+<pre><code>use admin
+</code></pre>
+</li>
+<li>
+<p>给admin设置用户密码</p>
+<ul>
+<li>user：用户名</li>
+<li>pwd：密码</li>
+<li>roles：</li>
+</ul>
+<pre><code class="language-shell">db.createUser({user: 'root', pwd: 'admin_mima', roles: ['root']})
+</code></pre>
+</li>
+<li>
+<p>验证是否成功，db.auth(用户名，密码)</p>
+<pre><code>db.auth('root','admin_mima')
+</code></pre>
+<p>如果返回1标拾验证成功，如果是0 则表示验证失败</p>
+</li>
+<li>
+<p>以上步骤是给root设置密码，如果要给特定的库设置权限，打比方test_demo库,切换到数据库test_demo</p>
+<pre><code class="language-shell">use test_demo
+</code></pre>
+</li>
+<li>
+<p>为test_demo添加用户，并且赋予权限</p>
+<pre><code class="language-shell">db.createUser({ user: 'herry', pwd: 'herry_mima', roles: [{ role: 'readWrite', db: 'test_demo' }] })
+</code></pre>
+<p>这行代码意思是 创建一个herryl用户 给予读写权限 db表示该用户操作的数据库名。</p>
+<p>Read：允许用户读取指定数据库<br>
+readWrite：允许用户读写指定数据库<br>
+dbAdmin：允许用户在指定数据库中执行管理函数，如索引创建、删除，查看统计或访问system.profile<br>
+userAdmin：允许用户向system.users集合写入，可以找指定数据库里创建、删除和管理用户<br>
+clusterAdmin：只在admin数据库中可用，赋予用户所有分片和复制集相关函数的管理权限。<br>
+readAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的读权限<br>
+readWriteAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的读写权限<br>
+userAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的userAdmin权限<br>
+dbAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的dbAdmin权限。<br>
+root：只在admin数据库中可用。超级账号，超级权限</p>
+</li>
+<li>
+<p>一切搞定，重新开机mongodb，通过增加 <code>--auth</code> 开启安全登录</p>
+<pre><code class="language-shell">mongod --dbpath /www/server/mongodb/data --auth
+</code></pre>
+</li>
+<li>
+<p>给数据库添加用户访问权限或者修改密码</p>
+<pre><code class="language-shell"> db.addUser('user','pwd')
+ db.auth('user','pwd')
+  //修改用户密码 一定要经过admin验证才可以执行
+ db.changeUserPassword('user','pwd'); 
+</code></pre>
+</li>
+<li>
+<p>或者通过宝塔面板mongodb配置页面来修改。</p>
+<ul>
+<li>bindIp修改为 0.0.0.0 允许外网访问</li>
+<li>authorization 修改为 enabled 开启认证<br>
+重启一下mongodb</li>
+</ul>
+<p>重启mongdb可以用命令行(/etc/init.d/mongodb restart)</p>
+<pre><code class="language-shell">/etc/init.d/mongodb restart
+</code></pre>
+</li>
+<li>
+<p>完成</p>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[centos 7安装gnome]]></title>
         <id>https://herryle.github.io/post/centos-7/</id>
