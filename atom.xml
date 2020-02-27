@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://herryle.github.io</id>
-    <title>herry</title>
-    <updated>2020-02-27T01:41:44.898Z</updated>
+    <title>herry&apos;s Blog</title>
+    <updated>2020-02-27T05:38:09.104Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://herryle.github.io"/>
     <link rel="self" href="https://herryle.github.io/atom.xml"/>
     <subtitle>万物之中，希望至美</subtitle>
     <logo>https://herryle.github.io/images/avatar.png</logo>
     <icon>https://herryle.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, herry</rights>
+    <rights>All rights reserved 2020, herry&apos;s Blog</rights>
     <entry>
         <title type="html"><![CDATA[MongoDB设置权限]]></title>
         <id>https://herryle.github.io/post/101/</id>
@@ -252,7 +252,7 @@ Job for vncserver@:1.service failed because the control process exited with erro
         <updated>2020-02-25T13:53:18.000Z</updated>
         <content type="html"><![CDATA[<h2 id="项目简介">项目简介</h2>
 <p>前一段时间领导临时给了一个小需求，要做一个简单的会议报表，要满足会议表格内容的增删改查、文件的上传下载以及用户登录验证，于是趁着划水的时间写了一下，看着网上针对这一块的教程不是很多，所以写下了这篇文章，也算是入门全栈开发的一篇基础文章，大佬勿喷。</p>
-<p>以下是项目地址，希望给个 <code>star</code>，鼓励一下：</p>
+<p>以下是项目地址，希望给个⭐️ <code>star</code>⭐️，鼓励一下：</p>
 <p><a href="https://github.com/herryle/vue-fight-direct">github地址</a></p>
 <p>效果预览：</p>
 <figure data-type="image" tabindex="1"><img src="https://s2.ax1x.com/2019/12/31/l37qmt.gif" alt="l37qmt.gif" loading="lazy"></figure>
@@ -550,7 +550,7 @@ module.exports = app =&gt; {
 <p>上传文件和下载  这里没有进行权限认证，也就是不登录也可以上传，当然也可以加上具体的权限认证可以参照element-ui中组件上传，这里就不做过多的赘述了。</p>
 <h2 id="总结">总结</h2>
 <p>其实整个项目很简单，无非就是增删改查，但是这也算是一个完整的全栈实战了，其中也包括用户登录注册，接口权限验证等。技术栈（Vue、Express、mongodb）也都是比较火的，对于初学者还是很有意义的。</p>
-<p>希望你不吝赐教，可以的话给颗 <code>star</code> 鼓励一下吧：</p>
+<p>希望你不吝赐教，可以的话给颗⭐️ <code>star</code>⭐️ 鼓励一下吧：</p>
 <p><a href="https://github.com/herryle/vue-fight-direct">github地址</a></p>
 ]]></content>
     </entry>
