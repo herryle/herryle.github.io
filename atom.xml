@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://herryle.github.io</id>
     <title>herry&apos;s Blog</title>
-    <updated>2020-02-28T02:20:41.860Z</updated>
+    <updated>2020-02-28T05:55:42.393Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://herryle.github.io"/>
     <link rel="self" href="https://herryle.github.io/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2020, herry&apos;s Blog</rights>
     <entry>
         <title type="html"><![CDATA[ Sam Altman: How To Be Successful ]]></title>
-        <id>https://herryle.github.io/post/106/</id>
-        <link href="https://herryle.github.io/post/106/">
+        <id>https://herryle.github.io/106/</id>
+        <link href="https://herryle.github.io/106/">
         </link>
         <updated>2020-02-28T02:10:58.000Z</updated>
         <content type="html"><![CDATA[<p>作者 Sam Altman：美国人，创业者、投资人、程序员以及博主。目前是最知名创业孵化器 Y Combinator 的CEO，OpenAI的联合主席。</p>
@@ -125,8 +125,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[What's Vue？ Why Vue？]]></title>
-        <id>https://herryle.github.io/post/103/</id>
-        <link href="https://herryle.github.io/post/103/">
+        <id>https://herryle.github.io/103/</id>
+        <link href="https://herryle.github.io/103/">
         </link>
         <updated>2020-02-27T06:47:53.000Z</updated>
         <content type="html"><![CDATA[<h3 id="vuejs新手入门指南">Vue.js新手入门指南😃</h3>
@@ -266,8 +266,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[centos 7安装gnome]]></title>
-        <id>https://herryle.github.io/post/centos-7/</id>
-        <link href="https://herryle.github.io/post/centos-7/">
+        <id>https://herryle.github.io/centos-7/</id>
+        <link href="https://herryle.github.io/centos-7/">
         </link>
         <updated>2020-02-26T07:14:55.000Z</updated>
         <content type="html"><![CDATA[<p>GNOME是一套纯粹自由的计算机软件，运行在操作系统上，提供图形桌面环境。</p>
@@ -345,8 +345,8 @@ Job for vncserver@:1.service failed because the control process exited with erro
     </entry>
     <entry>
         <title type="html"><![CDATA[转载-曾经优秀的人，怎么就突然不优秀了]]></title>
-        <id>https://herryle.github.io/post/23/</id>
-        <link href="https://herryle.github.io/post/23/">
+        <id>https://herryle.github.io/23/</id>
+        <link href="https://herryle.github.io/23/">
         </link>
         <updated>2020-02-26T02:20:06.000Z</updated>
         <content type="html"><![CDATA[<p>职场上有很多辛酸事，很多合伙人出局的故事，很多技术骨干被裁员的故事。说来模板都类似，曾经是名校毕业，曾经是优秀员工，曾经被领导表扬，曾经业绩突出，然而突然有一天，因为种种原因，被裁员了，想申诉，想求解释，结论是，能力不匹配，未能与企业一起成长云云。明明曾经优秀，怎么就突然不优秀了，拖后腿了呢。</p>
@@ -415,8 +415,8 @@ Job for vncserver@:1.service failed because the control process exited with erro
     </entry>
     <entry>
         <title type="html"><![CDATA[Vue+Node.js+Mongoodb开发完整的前后端项目]]></title>
-        <id>https://herryle.github.io/post/33/</id>
-        <link href="https://herryle.github.io/post/33/">
+        <id>https://herryle.github.io/33/</id>
+        <link href="https://herryle.github.io/33/">
         </link>
         <updated>2020-02-25T13:53:18.000Z</updated>
         <content type="html"><![CDATA[<h2 id="项目简介">项目简介</h2>
@@ -725,8 +725,8 @@ module.exports = app =&gt; {
     </entry>
     <entry>
         <title type="html"><![CDATA[MongoDB设置权限]]></title>
-        <id>https://herryle.github.io/post/101/</id>
-        <link href="https://herryle.github.io/post/101/">
+        <id>https://herryle.github.io/101/</id>
+        <link href="https://herryle.github.io/101/">
         </link>
         <updated>2019-02-27T01:33:08.000Z</updated>
         <content type="html"><![CDATA[<h1 id="mongodb设置权限">MongoDB设置权限</h1>
