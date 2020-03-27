@@ -1813,3 +1813,13 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
           background: RGBA(245,186,178,0.14)!important;
         }
          
+      .gt-post-content code {
+          background: #f9f9f9!important;
+        }
+ .gt-bg-accent-color-first {
+          background: #5698c3!important;
+        }
+  a {
+          color: #5698c3!important;
+        }
+    
