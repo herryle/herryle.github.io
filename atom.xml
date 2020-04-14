@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://herryle.github.io</id>
     <title>herry&apos;s Blog</title>
-    <updated>2020-04-14T12:23:52.718Z</updated>
+    <updated>2020-04-14T12:26:05.429Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://herryle.github.io"/>
     <link rel="self" href="https://herryle.github.io/atom.xml"/>
@@ -191,7 +191,8 @@ console.log(Math.max.myBind(Math, 34, 5, 3, 6, 54, 6, -67, 5, 7, 6, -8, 687)())
         <link href="https://herryle.github.io/ruKEtmUhw/">
         </link>
         <updated>2020-04-11T01:57:29.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="前言">前言</h2>
+        <content type="html"><![CDATA[<!-- more -->
+<h2 id="前言">前言</h2>
 <h2 id="websocket的由来">WebSocket的由来🤞</h2>
 <p>我们平时在开发过程中，接触最多的就是HTTP协议了，正常情况下，我们通过客户端向服务端发送HTTP请求，服务器响应请求资源，这个过程我们熟悉的不能再熟悉了。</p>
 <p>但是HTTP协议有一个问题就是通信只能由客户端发起，也就是说HTTP协议属于单向通信。</p>
