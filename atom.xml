@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://herryle.github.io</id>
     <title>herry&apos;s Blog</title>
-    <updated>2020-03-27T08:55:01.659Z</updated>
+    <updated>2020-04-14T12:20:56.204Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://herryle.github.io"/>
     <link rel="self" href="https://herryle.github.io/atom.xml"/>
@@ -10,6 +10,110 @@
     <logo>https://herryle.github.io/images/avatar.png</logo>
     <icon>https://herryle.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, herry&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[WebSocket入门]]></title>
+        <id>https://herryle.github.io/ruKEtmUhw/</id>
+        <link href="https://herryle.github.io/ruKEtmUhw/">
+        </link>
+        <updated>2020-04-11T01:57:29.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="前言">前言</h2>
+<h2 id="websocket的由来">WebSocket的由来🤞</h2>
+<p>我们平时在开发过程中，接触最多的就是HTTP协议了，正常情况下，我们通过客户端向服务端发送HTTP请求，服务器响应请求资源，这个过程我们熟悉的不能再熟悉了。</p>
+<p>但是HTTP协议有一个问题就是通信只能由客户端发起，也就是说HTTP协议属于单向通信。</p>
+<p>举个栗子，我们在股票中自选某个股票，我们很关心它的价格高于多少时准备卖掉，我们不可能时时刻刻盯着股价来看，这个时候就在想，如果交易所可以自动推送股票的价格该多好，如果采用我们平时HTTP协议做不到服务器主动向客户端推送消息。</p>
+<p>当然上述栗子也有办法解决，我们可以使用轮询，即每隔一段时间，客户端就像服务端发起一个询问，但是轮询最大的问题就是效率非常低下，而且很浪费资源，打比方成千上万的韭菜都在关注股票，都在发起请求，那这个请求量就很大了，因此，在很多大佬的努力下，WebSocket就横空出世了！</p>
+<h2 id="websocket的优点">WebSocket的优点😊</h2>
+<p>从上述举得栗子中就可以很好的看出WebSocket的优点：</p>
+<ol>
+<li>支持<strong>双向通信</strong>，实时性更好</li>
+<li>更好，更轻量与服务端进行通信，因为WebSocket提供了简单的消息规范，<strong>可以更快的适应长连接的环境</strong></li>
+<li>支持扩展。ws协议定义了扩展，用户可以扩展协议，或者实现自定义的子协议，同时可以加密</li>
+<li>可以发送文本，也可以发送二进制数据</li>
+<li>没有同源策略的限制，客户端可以任意服务器连接（没有同源策略，那我们也可以用来进行解决跨域问题啦🤣）</li>
+</ol>
+<h2 id="websocket的应用">WebSocket的应用🙈</h2>
+<p>现在WebSocket用处很多，最典型的有以下几个</p>
+<ol>
+<li>聊天室</li>
+<li>网站视频弹幕</li>
+<li>股票价格实时显示</li>
+<li>物联网数据推送</li>
+</ol>
+<p>还有其他的应用场景，大家可以好好想一想</p>
+<h2 id="举个栗子">举个栗子🌰</h2>
+<p>说了这么多，我们可以自己来实现一个WebSocket的栗子啦，例子包括了WebSocket服务端、WebSocket客户端（网页端）。完整代码可以在 <a href="https://github.com/herryle/websocket-demo">这里</a> 找到，有帮助的可以帮忙点个⭐️。</p>
+<p>上面我们提到WebSocket技术可以应用于股票价格实时显示，那我们就撸一个这样的例子。</p>
+<p><strong>先上效果</strong></p>
+<figure data-type="image" tabindex="1"><img src="https://herryimg.oss-cn-beijing.aliyuncs.com/1.gif" alt="1" loading="lazy"></figure>
+<p>从效果上来看我们可以发现当我们点击开始的时候，客户端就可以请求服务端，服务端去推送实时股价。</p>
+<p>好，看完效果我们来撸具体代码</p>
+<h3 id="1-客户端">1. 客户端</h3>
+<p>客户端先简单说明一下，这里为了方便，采用了Vue和ElementUi，具体代码可以看<a href="https://github.com/herryle/websocket-demo">这里</a> 。</p>
+<pre><code class="language-js">    //连接webscoekt
+    vm.ws = new WebSocket('ws://localhost:8082')
+    //打开websocket
+    vm.ws.onopen = function (e) {
+      console.log('Connection to server opened')
+      //发送消息
+      const stockName = vm.ws.send(
+        JSON.stringify(
+          vm.stockData.map((i) =&gt; {
+            return i.name
+          })
+        )
+      )
+      console.log('sened a mesg')
+    }
+    //收到服务器返回消息
+    vm.ws.onmessage = function (e) {
+      //解析data
+      vm.stockData = JSON.parse(e.data)
+    }
+</code></pre>
+<h3 id="2-服务端">2. 服务端</h3>
+<p>服务端用了<code>ws</code>这个库。当然大家也可以采用 <code>socket.io</code></p>
+<p>首先先安装一下这个库</p>
+<pre><code class="language-js">//安装 ws 库
+npm  i ws 
+</code></pre>
+<p>下面开始写server.js</p>
+<pre><code class="language-js">const WebSocket = require('ws')
+
+//生成WebSocket服务端
+const wss = new WebSocket.Server({ port: 8082 })
+
+function randomInterval(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min) / 100
+}
+
+//websocket连接
+wss.on('connection', function (ws) {
+  //接收信息
+  ws.on('message', function (message) {
+    stockRequest = JSON.parse(message)
+    console.log('收到消息', stockRequest)
+  })
+
+  //模拟股票价格
+  const clientStockUpdater = setInterval(function () {
+    for (let i in stockRequest) {
+      stockRequest[i].price += randomInterval(-100, 100)
+      //推送消息
+      ws.send(JSON.stringify(stockRequest))
+    }
+  }, 1000)
+
+  //关闭websocket
+  ws.on('close', function () {
+    clearInterval(clientStockUpdater)
+  })
+})
+
+</code></pre>
+<h2 id="结语️">结语✍️</h2>
+<p>看完以上是不是发现WebSocket很简单，其实本文只是一个WebSocket入门教程，大家不妨自己动手写一下，在我这个例子上在加深一下，探究一下WebSocket的加密以及心跳机制等。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[ Sam Altman: How To Be Successful ]]></title>
         <id>https://herryle.github.io/106/</id>
