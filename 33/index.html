@@ -1,0 +1,471 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Vue+Node.js+Mongoodb开发完整的前后端项目 | herry&#39;s Blog</title>
+<link rel="shortcut icon" href="https://herryle.github.io/favicon.ico?v=1679125095225">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://herryle.github.io/styles/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!-- DEMO JS -->
+<script src="media/scripts/index.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+  <a href="/">
+    <div class="navbar-brand">
+      <img class="user-avatar" src="/images/avatar.png" alt="头像" />
+      <div class="site-name gt-c-content-color-first">
+        herry&#39;s Blog
+      </div>
+    </div>
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="navbar-nav mr-auto" style="text-align: center">
+      
+      <div class="nav-item">
+        
+        <a href="/" class="menu gt-a-link">
+          首页
+        </a>
+        
+      </div>
+      
+      <div class="nav-item">
+        
+        <a href="/archives" class="menu gt-a-link">
+          归档
+        </a>
+        
+      </div>
+      
+      <div class="nav-item">
+        
+        <a href="/tags" class="menu gt-a-link">
+          标签
+        </a>
+        
+      </div>
+      
+      <div class="nav-item">
+        
+        <a href="/about" class="menu gt-a-link">
+          关于
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Vue+Node.js+Mongoodb开发完整的前后端项目
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-02-25 ·
+                    </time>
+                    
+                        <a href="https://herryle.github.io/tag/WCcCes5gM/" class="post-tags">
+                            # Node
+                        </a>
+                    
+                        <a href="https://herryle.github.io/tag/6fwpzPlmH/" class="post-tags">
+                            # Vue
+                        </a>
+                    
+                        <a href="https://herryle.github.io/tag/izvs3aP40/" class="post-tags">
+                            # MongoDB
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="项目简介">项目简介</h2>
+<p>前一段时间领导临时给了一个小需求，要做一个简单的会议报表，要满足会议表格内容的增删改查、文件的上传下载以及用户登录验证，于是趁着划水的时间写了一下，看着网上针对这一块的教程不是很多，所以写下了这篇文章，也算是入门全栈开发的一篇基础文章，大佬勿喷。</p>
+<p>以下是项目地址，希望给个⭐️ <code>star</code>⭐️，鼓励一下：</p>
+<p><a href="https://github.com/herryle/vue-fight-direct">github地址</a></p>
+<p>效果预览：</p>
+<figure data-type="image" tabindex="1"><img src="https://s2.ax1x.com/2019/12/31/l37qmt.gif" alt="l37qmt.gif" loading="lazy"></figure>
+<h2 id="技术栈">技术栈</h2>
+<p>项目前端基于Vue，后端基于Nodejs-Express，数据库采用Mongodb。</p>
+<h2 id="前端">前端</h2>
+<p>主要是基于 <code>Vue-Cli</code></p>
+<p>UI 框架选的是:element-ui</p>
+<p>css采用 <code>scss</code></p>
+<p>登录页的用的是element-ui的表单组件，没有单独写页面，原谅我的懒。。。</p>
+<p>前端就不过多介绍了，也就是老一套，具体的可以看代码。</p>
+<p>项目结构（大致）如下：</p>
+<pre><code>├── pulic         
+│   └── index.html 
+├── src
+│   ├── assets   
+│   ├── components    // 主组件    
+│   └── plugin       // element插件
+│   └── App.vue      
+│   └──http.js       // 对 axios进行 二次封装
+│   └── main.js       
+├── .env              // 环境变量配置文件
+</code></pre>
+<p><strong>Tip：</strong> 结构很简单，主要是axios封装，组件element+bootstrap。</p>
+<h2 id="后端">后端</h2>
+<p>后端采用Nodejs，框架采用的Express，这个可以根据个人兴趣来，Koa,nestjs，Hapi都可。不做过多评价。</p>
+<p>后端项目当中用到的第三方库，主要是列一下最主要的。</p>
+<pre><code class="language-json">  &quot;dependencies&quot;: {
+     // 加密用户密码（数据库没有存明文密码）这里强调提下windows最好用bcryptjs,mac可以用bcrypt。
+    &quot;bcryptjs&quot;: &quot;^2.4.3&quot;,
+     //解决跨域
+    &quot;cors&quot;: &quot;^2.8.5&quot;,
+      //这里用的是express下一版本
+    &quot;express&quot;: &quot;^5.0.0-alpha.7&quot;,
+      //
+    &quot;http-assert&quot;: &quot;^1.4.1&quot;,
+      //目前最流行的跨域认证
+    &quot;jsonwebtoken&quot;: &quot;^8.5.1&quot;,
+      //一款为异步工作环境设计的 MongoDB 对象建模工具
+    &quot;mongoose&quot;: &quot;^5.7.13&quot;,
+    &quot;morgan&quot;: &quot;^1.9.1&quot;,
+      //express 中间件 上传下载文档
+    &quot;multer&quot;: &quot;^1.4.2&quot;,
+  }
+</code></pre>
+<p>后端的项目结构如下，这是自己搭建的，最好还是按照规范来。</p>
+<pre><code>│   ├── middleware// 自定义中间件目录
+│   ├── models    //定义的表结构
+│   ├── plugin    // 数据库配置文件
+│   │    
+│   ├── routes    // 路由文件
+│   │   
+│   └── uploads    // 文件上传目录
+│   │  
+├── index.js        // 项目入口文件
+
+</code></pre>
+<h2 id="数据库">数据库</h2>
+<p>数据库这里采用的是mongodb，具体的就不过多介绍了。</p>
+<p>表结构如下：</p>
+<p>表单数据模型</p>
+<pre><code class="language-js">const mongoose = require('mongoose')
+//创建模型
+const schema = new mongoose.Schema({
+  date: { type: Date },
+  iteminfo: [
+    {
+      road_name: { type: String },
+      road_lat: { type: Number },
+      road_lng: { type: Number },
+      ys_state: { type: String },
+      ws_state: { type: String },
+      issus_list: { type: String },
+      list_before_url: [{ name: { type: String }, url: { type: String } }],
+      list_after_url: [{ name: { type: String }, url: { type: String } }],
+      remark: { type: String }
+    }
+  ]
+})
+
+//导出模型
+module.exports = mongoose.model('FightInfo', schema)
+</code></pre>
+<p>用户模型</p>
+<pre><code class="language-js">const mongoose = require('mongoose')
+
+const schema = new mongoose.Schema({
+  username: { type: String },
+  password: {
+    type: String,
+    set(val) {
+      return require('bcryptjs').hashSync(val, 10)
+    }
+  }
+})
+
+module.exports = mongoose.model('User', schema)
+
+</code></pre>
+<p><strong>Tip:</strong> 表结构很简单，两张表结构模型都在model文件夹下面</p>
+<h2 id="前后端分离">前后端分离</h2>
+<p>项目采用前后端分离的方式进行开发,Express提供API接口，进行访问过滤（路由）、验证（JSON-WEB-TOKEN）以及mongoose操作mongoodb数据库的一些知识和技巧。</p>
+<ol>
+<li>
+<p>启动Express 主文件如下</p>
+<pre><code class="language-js">const express = require('express')
+const logger = require('morgan')
+const app = express()
+
+//请求logger  便于调试
+app.use(logger('dev'))
+//支持json
+app.use(express.json())
+//解决跨域
+app.use(require('cors')())
+
+//静态文件夹 上传下载文件
+app.use('/uploads', express.static(__dirname + '/uploads'))
+//静态文件夹
+app.use('/json', express.static(__dirname + '/plugin/json'))
+
+//连接数据库文件
+require('./plugin/db/config')(app)
+//表单的具体操作方法
+require('./routes/fightinfo')(app)
+//用户登录验证
+require('./routes/user')(app)
+
+
+app.use(async (err, req, res, next) =&gt; {
+  res.status(err.statusCode || 500).send({
+    message: err.message
+  })
+})
+
+app.listen(3001, () =&gt; {
+  console.log('http://127.0.0.1:3001/')
+})
+</code></pre>
+</li>
+<li>
+<p>数据库连接</p>
+<pre><code class="language-js">//mongodb数据库配置连接
+module.exports = app =&gt; {
+  const mongoose = require('mongoose')
+  mongoose.connect('mongodb://localhost/vue-fight-direct', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+  })
+}
+</code></pre>
+</li>
+<li>
+<p>编写用户验证的路由</p>
+<p><strong>Tip:</strong> <strong><em>这里是用户登录注册的路由，由于没有写注册页面（我这里只是为了实现一个交互功能，好像是为了我的懒找借口。。），大家可以用第三方工具PostMan进行注册验证，字段可以根据用户模型来即可，也就是（username，password）。如果不注册的话 数据增删改查都不行，需要进行登录验证。</em>。</strong></p>
+<pre><code class="language-js">module.exports = app =&gt; {
+  const express = require('express')
+  const router = express.Router()
+  const jwt = require('jsonwebtoken')
+  const bcryptjs = require('bcryptjs')
+  //引入用户模型文件
+  const User = require('../../models/User')
+  app.set('secret', 'ashjhdjhasjdidh')
+    //用户登录
+  router.post('/login', async (req, res) =&gt; {
+    const { username, password } = req.body
+    //判断用户是否存在
+    const user = await User.findOne({ username })
+    if (!user) {
+      return res.status(422).send({
+        message: '用户不存在'
+      })
+    }
+    //判断密码是否正确
+    const isValid = bcryptjs.compareSync(password, user.password)
+    if (!isValid) {
+      return res.status(422).send({
+        message: '密码错误'
+      })
+    }
+    //发送token
+    const token = jwt.sign({ id: user._id }, app.get('secret'))
+    res.send({ token: token, message: '登陆成功' })
+  })
+   
+  //用户注册
+  router.post('/register', async (req, res) =&gt; {
+    const model = await User.create(req.body)
+    res.send(model)
+  })
+
+  app.use('/api/rest/user', router)
+}
+
+</code></pre>
+</li>
+<li>
+<p>编写表单具体操作(CRUD)路由</p>
+<pre><code class="language-js">module.exports = app =&gt; {
+  const express = require('express')
+  const multer = require('multer')
+  const FightInfo = require('../../models/FightInfo')
+  const router = express.Router({
+    mergeParams: true
+  })
+
+  const storage = multer.diskStorage({
+    destination: (req, file, cb) =&gt; {
+      cb(null, './uploads')
+    },
+    filename: (req, file, cb) =&gt; {
+      cb(null, file.originalname)
+    }
+  })
+  const upload = multer({
+    storage: storage
+  })
+
+  //用户验证中间件
+  const authMiddleWare = require('../../middleware/auth')
+
+  //添加表单
+  router.post('/', authMiddleWare(), async (req, res) =&gt; {
+    await FightInfo.create(req.body)
+    res.send({ message: '表单成功添加' })
+  })
+
+  //修改表单信息
+  router.put('/:id', authMiddleWare(), async (req, res) =&gt; {
+    await FightInfo.findByIdAndUpdate(req.params.id, req.body)
+    res.send({ message: '保存成功' })
+  })
+
+  //获取单个表单
+  router.get('/:id', async (req, res) =&gt; {
+    const items = await FightInfo.findById(req.params.id)
+    res.send(items)
+  })
+
+  //获取所有表单
+  router.get('/', async (req, res) =&gt; {
+    const items = await FightInfo.find().sort({ date: -1 })
+    res.send(items)
+  })
+
+  //文件上传
+  app.post('/api/rest/upload', upload.single('file'), async (req, res) =&gt; {
+    req.file.url = `http://localhost:3001/uploads/${req.file.filename}`
+    await res.send(req.file)
+  })
+
+  app.use('/api/rest/fightinfo', router)
+}
+
+</code></pre>
+</li>
+<li>
+<p>用户验证中间件</p>
+<pre><code class="language-js">module.exports = options =&gt; {
+  return async (req, res, next) =&gt; {
+    const jwt = require('jsonwebtoken')
+    const token = String(req.headers.authorization || '').split(' ').pop()
+    //判断有无token
+    if (!token) {
+      return res.status(401).send({
+        message: '无效的token'
+      })
+    }
+    //判断用户是否存在
+    const userid = jwt.verify(token, req.app.get('secret')).id
+    if (!userid) {
+      return res.status(401).send({
+        message: '用户不存在'
+      })
+    }
+    next()
+  }
+}
+
+</code></pre>
+</li>
+</ol>
+<h2 id="项目详述">项目详述</h2>
+<p><strong>新增表单</strong></p>
+<p>用户可以选择新的表单进行会议记录，但是前提必须是要登录，才有权限。</p>
+<p><em><strong>用户初次登录的时候并没有表单信息，可以选择新增表单进行添加内容。</strong></em></p>
+<p><strong>新增作战对象</strong></p>
+<p>用户可以选择在表单中新增单个对象进行会议记录，这里不需要登录，但是保存还是需要权限认证。</p>
+<p><strong>登录</strong></p>
+<p>用户登录认证，前端登录后台返回token，存入session中，保存和新增操作都需要进行认证。</p>
+<p><strong>其他功能</strong></p>
+<p>表单中可以进行内容编辑，每次编辑过后要进行保存入库，也可以进行上传文件和下载。</p>
+<p><strong>不足</strong></p>
+<p>上传文件和下载  这里没有进行权限认证，也就是不登录也可以上传，当然也可以加上具体的权限认证可以参照element-ui中组件上传，这里就不做过多的赘述了。</p>
+<h2 id="总结">总结</h2>
+<p>其实整个项目很简单，无非就是增删改查，但是这也算是一个完整的全栈实战了，其中也包括用户登录注册，接口权限验证等。技术栈（Vue、Express、mongodb）也都是比较火的，对于初学者还是很有意义的。</p>
+<p>希望你不吝赐教，可以的话给颗⭐️ <code>star</code>⭐️ 鼓励一下吧：</p>
+<p><a href="https://github.com/herryle/vue-fight-direct">github地址</a></p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://herryle.github.io/M1VcEne1-/" class="post-title gt-a-link">
+                    JS使用小技巧总结
+                </a>
+            </div>
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">万物之中，希望至美</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/herryle" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a href="https://herryle.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+</div>
+</body>
+</html>

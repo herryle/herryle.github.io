@@ -1,0 +1,232 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>centos 7安装gnome | herry&#39;s Blog</title>
+<link rel="shortcut icon" href="https://herryle.github.io/favicon.ico?v=1679125095225">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://herryle.github.io/styles/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!-- DEMO JS -->
+<script src="media/scripts/index.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+  <a href="/">
+    <div class="navbar-brand">
+      <img class="user-avatar" src="/images/avatar.png" alt="头像" />
+      <div class="site-name gt-c-content-color-first">
+        herry&#39;s Blog
+      </div>
+    </div>
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="navbar-nav mr-auto" style="text-align: center">
+      
+      <div class="nav-item">
+        
+        <a href="/" class="menu gt-a-link">
+          首页
+        </a>
+        
+      </div>
+      
+      <div class="nav-item">
+        
+        <a href="/archives" class="menu gt-a-link">
+          归档
+        </a>
+        
+      </div>
+      
+      <div class="nav-item">
+        
+        <a href="/tags" class="menu gt-a-link">
+          标签
+        </a>
+        
+      </div>
+      
+      <div class="nav-item">
+        
+        <a href="/about" class="menu gt-a-link">
+          关于
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    centos 7安装gnome
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-02-26 ·
+                    </time>
+                    
+                        <a href="https://herryle.github.io/tag/ZhTu_KIKu/" class="post-tags">
+                            # Linux
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>GNOME是一套纯粹自由的计算机软件，运行在操作系统上，提供图形桌面环境。</p>
+<p>GNOME 包含了 Panel （用来启动此程式和显示目前的状态）、桌面 （应用程式和资料放置的地方）及一系列的标准桌面工具和应用程式，并且能让各个应用程式都能正常地运作。</p>
+<p>GNOME是Linux操作系统上最常用的图形桌面环境之一。</p>
+<p>​       VNC基本上是由两部分组成：一部分是客户端的应用程序(vncviewer)；另外一部分是服务器端的应用程序(vncserver)。VNC的基本运行原理和一些Windows下的远程控制软件很相像。VNC的服务器端应用程序在UNIX和Linux操作系统中适应性很强，图形用户界面十分友好，看上去和Windows下的软件界面也很类似。在任何安装了客户端的应用程序(vncviewer)的Linux平台的计算机都能十分方便地和安装了服务器端的应用程序(vncserver)的计算机相互连接。另外，服务器端 (vncserver)还内建了Java Web接口，这样用户通过服务器端对其他计算机的操作就能通过Netscape显示出来了，这样的操作过程和显示方式比较直观方便。</p>
+<p>在CentOS7上面安装步骤如下</p>
+<ol>
+<li>
+<p>安装宝塔面板（方便在接下来步骤中进行配置文档的编辑和监控系统）</p>
+<pre><code class="language-shell">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install.sh &amp;&amp; sh install.sh
+</code></pre>
+</li>
+<li>
+<p>安装GNOME</p>
+<pre><code class="language-shell">yum groupinstall &quot;GNOME Desktop&quot; &quot;Graphical Administration Tools&quot;
+</code></pre>
+</li>
+</ol>
+<p>安装包大概在800M左右 ，选择y进行安装。</p>
+<p>出现complete则表示安装成功</p>
+<p>启动GNOME桌面</p>
+<pre><code class="language-shell">startx
+</code></pre>
+<ol>
+<li>安装VNCServer</li>
+</ol>
+<pre><code class="language-shell">安装
+#yum -y install tigervnc-server
+配置
+#cp /lib/systemd/system/vncserver@.service /etc/systemd/system/vncserver@:1.service
+设置VNC密码
+#vncpasswd
+重启systemd
+#systemctl daemon-reload
+设置永久开启VNC服务
+#systemctl enable vncserver@:1.service
+启动VNC服务
+#systemctl start vncserver@:1.service
+如遇报错：
+Job for vncserver@:1.service failed because the control process exited with error code. See &quot;systemctl status vncserver@:1.service&quot; and &quot;journalctl -xe&quot; for details.
+编辑/etc/systemd/system/vncserver@:1.service配置文件：
+将Type=forking改为Type=simple
+重新启动VNC服务
+#systemctl restart vncserver@:1.service
+
+查看VNC服务状态
+#systemctl status vncserver@:1.service
+如有Activie:failed则表示启动失败
+编辑/etc/systemd/system/vncserver@:1.service配置文件：
+将里面所有的&lt;USER&gt;替换为当前用户名(大致有两处)，如root；另，如果是root用户，应将PIDFile的/home/root改为/root
+重新启动VNC服务
+这里可能会遇到错误，当执行start vncserver@:1.service时可能提示如下错误。
+Job for vncserver@:1.service failed because the control process exited with error code. See 
+&quot;systemctl status vncserver@:1.service&quot; and &quot;journalctl -xe&quot; for details.
+解决办法
+删除/tmp/.X11-unix/ 目录，再启用一次即可
+# \rm -R /tmp/.X11-unix/
+#systemctl restart vncserver@:1.service
+
+</code></pre>
+<ol start="4">
+<li>VNC客户端连接</li>
+</ol>
+<blockquote>
+<ul>
+<li>VNC远程服务端需开放5901端口</li>
+<li>客户端安装VNC Viewer或TigerVNC</li>
+<li>连接地址填写ip:5901</li>
+<li>然后输入所设置的VNC密码</li>
+</ul>
+</blockquote>
+<p>end！！！！</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://herryle.github.io/33/" class="post-title gt-a-link">
+                    Vue+Node.js+Mongoodb开发完整的前后端项目
+                </a>
+            </div>
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">万物之中，希望至美</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/herryle" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a href="https://herryle.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+</div>
+</body>
+</html>

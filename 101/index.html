@@ -1,0 +1,231 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MongoDB设置权限 | herry&#39;s Blog</title>
+<link rel="shortcut icon" href="https://herryle.github.io/favicon.ico?v=1679125095225">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://herryle.github.io/styles/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!-- DEMO JS -->
+<script src="media/scripts/index.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+  <a href="/">
+    <div class="navbar-brand">
+      <img class="user-avatar" src="/images/avatar.png" alt="头像" />
+      <div class="site-name gt-c-content-color-first">
+        herry&#39;s Blog
+      </div>
+    </div>
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="navbar-nav mr-auto" style="text-align: center">
+      
+      <div class="nav-item">
+        
+        <a href="/" class="menu gt-a-link">
+          首页
+        </a>
+        
+      </div>
+      
+      <div class="nav-item">
+        
+        <a href="/archives" class="menu gt-a-link">
+          归档
+        </a>
+        
+      </div>
+      
+      <div class="nav-item">
+        
+        <a href="/tags" class="menu gt-a-link">
+          标签
+        </a>
+        
+      </div>
+      
+      <div class="nav-item">
+        
+        <a href="/about" class="menu gt-a-link">
+          关于
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    MongoDB设置权限
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2019-02-27 ·
+                    </time>
+                    
+                        <a href="https://herryle.github.io/tag/izvs3aP40/" class="post-tags">
+                            # MongoDB
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h1 id="mongodb设置权限">MongoDB设置权限</h1>
+<ol>
+<li>
+<p>输入命令行mongo，进入mongodb环境</p>
+<pre><code class="language-shellsh">mongo
+</code></pre>
+</li>
+<li>
+<p>切换到admin 数据库</p>
+<pre><code>use admin
+</code></pre>
+</li>
+<li>
+<p>给admin设置用户密码</p>
+<ul>
+<li>user：用户名</li>
+<li>pwd：密码</li>
+<li>roles：</li>
+</ul>
+<pre><code class="language-shell">db.createUser({user: 'root', pwd: 'admin_mima', roles: ['root']})
+</code></pre>
+</li>
+<li>
+<p>验证是否成功，db.auth(用户名，密码)</p>
+<pre><code>db.auth('root','admin_mima')
+</code></pre>
+<p>如果返回1标拾验证成功，如果是0 则表示验证失败</p>
+</li>
+<li>
+<p>以上步骤是给root设置密码，如果要给特定的库设置权限，打比方test_demo库,切换到数据库test_demo</p>
+<pre><code class="language-shell">use test_demo
+</code></pre>
+</li>
+<li>
+<p>为test_demo添加用户，并且赋予权限</p>
+<pre><code class="language-shell">db.createUser({ user: 'herry', pwd: 'herry_mima', roles: [{ role: 'readWrite', db: 'test_demo' }] })
+</code></pre>
+<p>这行代码意思是 创建一个herryl用户 给予读写权限 db表示该用户操作的数据库名。</p>
+<p>Read：允许用户读取指定数据库<br>
+readWrite：允许用户读写指定数据库<br>
+dbAdmin：允许用户在指定数据库中执行管理函数，如索引创建、删除，查看统计或访问system.profile<br>
+userAdmin：允许用户向system.users集合写入，可以找指定数据库里创建、删除和管理用户<br>
+clusterAdmin：只在admin数据库中可用，赋予用户所有分片和复制集相关函数的管理权限。<br>
+readAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的读权限<br>
+readWriteAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的读写权限<br>
+userAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的userAdmin权限<br>
+dbAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的dbAdmin权限。<br>
+root：只在admin数据库中可用。超级账号，超级权限</p>
+</li>
+<li>
+<p>一切搞定，重新开机mongodb，通过增加 <code>--auth</code> 开启安全登录</p>
+<pre><code class="language-shell">mongod --dbpath /www/server/mongodb/data --auth
+</code></pre>
+</li>
+<li>
+<p>给数据库添加用户访问权限或者修改密码</p>
+<pre><code class="language-shell"> db.addUser('user','pwd')
+ db.auth('user','pwd')
+  //修改用户密码 一定要经过admin验证才可以执行
+ db.changeUserPassword('user','pwd'); 
+</code></pre>
+</li>
+<li>
+<p>或者通过宝塔面板mongodb配置页面来修改。</p>
+<ul>
+<li>bindIp修改为 0.0.0.0 允许外网访问</li>
+<li>authorization 修改为 enabled 开启认证<br>
+重启一下mongodb</li>
+</ul>
+<p>重启mongdb可以用命令行(/etc/init.d/mongodb restart)</p>
+<pre><code class="language-shell">/etc/init.d/mongodb restart
+</code></pre>
+</li>
+<li>
+<p>完成</p>
+</li>
+</ol>
+
+                </div>
+            </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">万物之中，希望至美</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/herryle" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a href="https://herryle.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+</div>
+</body>
+</html>

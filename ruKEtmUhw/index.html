@@ -1,0 +1,258 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>WebSocket入门 | herry&#39;s Blog</title>
+<link rel="shortcut icon" href="https://herryle.github.io/favicon.ico?v=1679125095225">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://herryle.github.io/styles/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!-- DEMO JS -->
+<script src="media/scripts/index.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+  <a href="/">
+    <div class="navbar-brand">
+      <img class="user-avatar" src="/images/avatar.png" alt="头像" />
+      <div class="site-name gt-c-content-color-first">
+        herry&#39;s Blog
+      </div>
+    </div>
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="navbar-nav mr-auto" style="text-align: center">
+      
+      <div class="nav-item">
+        
+        <a href="/" class="menu gt-a-link">
+          首页
+        </a>
+        
+      </div>
+      
+      <div class="nav-item">
+        
+        <a href="/archives" class="menu gt-a-link">
+          归档
+        </a>
+        
+      </div>
+      
+      <div class="nav-item">
+        
+        <a href="/tags" class="menu gt-a-link">
+          标签
+        </a>
+        
+      </div>
+      
+      <div class="nav-item">
+        
+        <a href="/about" class="menu gt-a-link">
+          关于
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    WebSocket入门
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-04-11 ·
+                    </time>
+                    
+                        <a href="https://herryle.github.io/tag/jnJ1yjSE2/" class="post-tags">
+                            # JavaScript
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <!-- more -->
+<h2 id="前言">前言</h2>
+<h2 id="websocket的由来">WebSocket的由来🤞</h2>
+<p>我们平时在开发过程中，接触最多的就是HTTP协议了，正常情况下，我们通过客户端向服务端发送HTTP请求，服务器响应请求资源，这个过程我们熟悉的不能再熟悉了。</p>
+<p>但是HTTP协议有一个问题就是通信只能由客户端发起，也就是说HTTP协议属于单向通信。</p>
+<p>举个栗子，我们在股票中自选某个股票，我们很关心它的价格高于多少时准备卖掉，我们不可能时时刻刻盯着股价来看，这个时候就在想，如果交易所可以自动推送股票的价格该多好，如果采用我们平时HTTP协议做不到服务器主动向客户端推送消息。</p>
+<p>当然上述栗子也有办法解决，我们可以使用轮询，即每隔一段时间，客户端就像服务端发起一个询问，但是轮询最大的问题就是效率非常低下，而且很浪费资源，打比方成千上万的韭菜都在关注股票，都在发起请求，那这个请求量就很大了，因此，在很多大佬的努力下，WebSocket就横空出世了！</p>
+<h2 id="websocket的优点">WebSocket的优点😊</h2>
+<p>从上述举得栗子中就可以很好的看出WebSocket的优点：</p>
+<ol>
+<li>支持<strong>双向通信</strong>，实时性更好</li>
+<li>更好，更轻量与服务端进行通信，因为WebSocket提供了简单的消息规范，<strong>可以更快的适应长连接的环境</strong></li>
+<li>支持扩展。ws协议定义了扩展，用户可以扩展协议，或者实现自定义的子协议，同时可以加密</li>
+<li>可以发送文本，也可以发送二进制数据</li>
+<li>没有同源策略的限制，客户端可以任意服务器连接（没有同源策略，那我们也可以用来进行解决跨域问题啦🤣）</li>
+</ol>
+<h2 id="websocket的应用">WebSocket的应用🙈</h2>
+<p>现在WebSocket用处很多，最典型的有以下几个</p>
+<ol>
+<li>聊天室</li>
+<li>网站视频弹幕</li>
+<li>股票价格实时显示</li>
+<li>物联网数据推送</li>
+</ol>
+<p>还有其他的应用场景，大家可以好好想一想</p>
+<h2 id="举个栗子">举个栗子🌰</h2>
+<p>说了这么多，我们可以自己来实现一个WebSocket的栗子啦，例子包括了WebSocket服务端、WebSocket客户端（网页端）。完整代码可以在 <a href="https://github.com/herryle/websocket-demo">这里</a> 找到，有帮助的可以帮忙点个⭐️。</p>
+<p>上面我们提到WebSocket技术可以应用于股票价格实时显示，那我们就撸一个这样的例子。</p>
+<p><strong>先上效果</strong></p>
+<figure data-type="image" tabindex="1"><img src="https://herryimg.oss-cn-beijing.aliyuncs.com/1.gif" alt="1" loading="lazy"></figure>
+<p>从效果上来看我们可以发现当我们点击开始的时候，客户端就可以请求服务端，服务端去推送实时股价。</p>
+<p>好，看完效果我们来撸具体代码</p>
+<h3 id="1-客户端">1. 客户端</h3>
+<p>客户端先简单说明一下，这里为了方便，采用了Vue和ElementUi，具体代码可以看<a href="https://github.com/herryle/websocket-demo">这里</a> 。</p>
+<pre><code class="language-js">    //连接webscoekt
+    vm.ws = new WebSocket('ws://localhost:8082')
+    //打开websocket
+    vm.ws.onopen = function (e) {
+      console.log('Connection to server opened')
+      //发送消息
+      const stockName = vm.ws.send(
+        JSON.stringify(
+          vm.stockData.map((i) =&gt; {
+            return i.name
+          })
+        )
+      )
+      console.log('sened a mesg')
+    }
+    //收到服务器返回消息
+    vm.ws.onmessage = function (e) {
+      //解析data
+      vm.stockData = JSON.parse(e.data)
+    }
+</code></pre>
+<h3 id="2-服务端">2. 服务端</h3>
+<p>服务端用了<code>ws</code>这个库。当然大家也可以采用 <code>socket.io</code></p>
+<p>首先先安装一下这个库</p>
+<pre><code class="language-js">//安装 ws 库
+npm  i ws 
+</code></pre>
+<p>下面开始写server.js</p>
+<pre><code class="language-js">const WebSocket = require('ws')
+
+//生成WebSocket服务端
+const wss = new WebSocket.Server({ port: 8082 })
+
+function randomInterval(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min) / 100
+}
+
+//websocket连接
+wss.on('connection', function (ws) {
+  //接收信息
+  ws.on('message', function (message) {
+    stockRequest = JSON.parse(message)
+    console.log('收到消息', stockRequest)
+  })
+
+  //模拟股票价格
+  const clientStockUpdater = setInterval(function () {
+    for (let i in stockRequest) {
+      stockRequest[i].price += randomInterval(-100, 100)
+      //推送消息
+      ws.send(JSON.stringify(stockRequest))
+    }
+  }, 1000)
+
+  //关闭websocket
+  ws.on('close', function () {
+    clearInterval(clientStockUpdater)
+  })
+})
+
+</code></pre>
+<h2 id="结语️">结语✍️</h2>
+<p>看完以上是不是发现WebSocket很简单，其实本文只是一个WebSocket入门教程，大家不妨自己动手写一下，在我这个例子上在加深一下，探究一下WebSocket的加密以及心跳机制等。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://herryle.github.io/106/" class="post-title gt-a-link">
+                     Sam Altman: How To Be Successful 
+                </a>
+            </div>
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">万物之中，希望至美</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/herryle" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a href="https://herryle.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+</div>
+</body>
+</html>

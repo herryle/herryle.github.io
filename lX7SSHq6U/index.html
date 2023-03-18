@@ -1,0 +1,328 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>call、apply、bind | herry&#39;s Blog</title>
+<link rel="shortcut icon" href="https://herryle.github.io/favicon.ico?v=1679125095225">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://herryle.github.io/styles/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!-- DEMO JS -->
+<script src="media/scripts/index.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+  <a href="/">
+    <div class="navbar-brand">
+      <img class="user-avatar" src="/images/avatar.png" alt="头像" />
+      <div class="site-name gt-c-content-color-first">
+        herry&#39;s Blog
+      </div>
+    </div>
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="navbar-nav mr-auto" style="text-align: center">
+      
+      <div class="nav-item">
+        
+        <a href="/" class="menu gt-a-link">
+          首页
+        </a>
+        
+      </div>
+      
+      <div class="nav-item">
+        
+        <a href="/archives" class="menu gt-a-link">
+          归档
+        </a>
+        
+      </div>
+      
+      <div class="nav-item">
+        
+        <a href="/tags" class="menu gt-a-link">
+          标签
+        </a>
+        
+      </div>
+      
+      <div class="nav-item">
+        
+        <a href="/about" class="menu gt-a-link">
+          关于
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    call、apply、bind
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-04-14 ·
+                    </time>
+                    
+                        <a href="https://herryle.github.io/tag/jnJ1yjSE2/" class="post-tags">
+                            # JavaScript
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="前言">前言</h2>
+<p>在平时面试中，call、apply、bind这三个得用法还是会经常问的，比如三者得区别，作用，或者手写call、apply、bind，因此整理了一下</p>
+<h2 id="call-apply-bind作用">call、apply、bind作用</h2>
+<p>call() 方法使用一个指定的 <code>this</code> 值和单独给出的一个或多个参数来调用一个函数。</p>
+<p><strong><code>apply()</code></strong> 方法调用一个具有给定<code>this</code>值的函数，以及作为一个数组（或<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Indexed_collections#Working_with_array-like_objects">类似数组对象</a>）提供的参数</p>
+<p><code>bind()</code> 方法创建一个新的函数，在 <code>bind()</code> 被调用时，这个新函数的 <code>this</code> 被指定为 <code>bind()</code> 的第一个参数，而其余参数将作为新函数的参数，供调用时使用。</p>
+<p>这三个解释来自<code>MDN</code>，我们可以发现这三个函数都和this有关系，也就是改变函数运行时this得指向。</p>
+<h3 id="举个栗子">举个栗子</h3>
+<p>我们先来看一下this指向的代码</p>
+<pre><code class="language-js">function Person() {}
+Person.prototype = {
+  name: 'lee',
+  showName: function () {
+    console.log(this.name)
+  },
+}
+Person.prototype.showName() 
+</code></pre>
+<p>上面得代码中调用<code>showName()</code>方法会打印出 <code>lee</code>  ，因为this得指向在这里指向得是 Person这个对象，这个例子很简单吧，再往下看</p>
+<pre><code class="language-js">function Person() {}
+Person.prototype = {
+  name: 'lee',
+  showName: function () {
+    console.log(this.name)
+  },
+}
+
+Person.prototype.showName()
+
+let obj = {
+  name: 'herry',
+}
+</code></pre>
+<p>我们新增了一个对象字面量，也想打印出name这个变量，怎么办呢？难道我们在直接写一个<code>consloe.log()</code>吗？这多麻烦，那我们可不可以通过Person的<code>showName</code>方法来调用呢？直接复用<code>showName()</code>方法不就好了吗？答案是当然可以。</p>
+<pre><code class="language-js">function Person() {}
+Person.prototype = {
+  name: 'lee',
+  showName: function () {
+    console.log(this.name)
+  },
+}
+
+Person.prototype.showName() //lee
+
+let obj = {
+  name: 'herry',
+}
+
+Person.prototype.showName.call(obj) //herry
+Person.prototype.showName.apply(obj) //herry
+Person.prototype.showName.bind(obj)() //herry
+</code></pre>
+<p>上述例子我们就已经看出来call、apply、bind的用法了，他们的作用就是动态改变了上下文，也就是改变了this的指向。</p>
+<h2 id="call-apply-bind区别">call、apply、bind区别</h2>
+<p>上面的例子中我们分别通过call、apply、bind来实现想要的效果，结果也都是一模一样的，难道就没有一点区别吗？肯定有区别的，要不然设计ES方案的也都是吃饱了没事干的主，那有什么区别呢？从MDN给出的解释中我们也可以找到去别的。</p>
+<h3 id="三者区别">三者区别</h3>
+<ul>
+<li>
+<p>call和apply 改变了函数的this上下文之后<strong>便立即执行函数</strong>，bind则是返回改变了上下文后的一个函数。</p>
+<p>也就是call 和apply 立即执行，<strong>bind不立即执行</strong></p>
+</li>
+<li>
+<p>call和apply基本类似，但是他们立即传入的参数不一样，call方法接收的时若干个参数列表，apply接收的时一个包含多个的参数的数组</p>
+</li>
+</ul>
+<h3 id="举个栗子-2">举个栗子</h3>
+<p>求数组中最大值和最小值</p>
+<pre><code class="language-js">var arr = [34, 5, 3, 6, 54, 6, -67, 5, 7, 6, -8, 687]
+//apply接收数组
+Math.max.apply(Math, arr)
+//call接收若干个参数
+Math.max.call(Math, 34, 5, 3, 6, 54, 6, -67, 5, 7, 6, -8, 687)
+//bind不会立即执行  要加上()去执行函数
+Math.max.bind(Math, 34, 5, 3, 6, 54, 6, -67, 5, 7, 6, -8, 687)()
+</code></pre>
+<p>这个栗子很好的看出来了三者的区别。</p>
+<h2 id="手写call-apply-bind">手写call、apply、bind</h2>
+<p>我们已经了解了call、apply、bind的作用，也知道了三者的区别，那我们再进一步去手写三者函数，话不多说，搞起来。</p>
+<h3 id="手写call">手写call</h3>
+<p>我们在来看一下call的定义</p>
+<p>call() 方法使用一个指定的 <code>this</code> 值和单独给出的一个或多个参数来调用一个函数</p>
+<p>也就是说call接收多个参数，最重要的是第一个参数是this，其他的都是函数的参数了。</p>
+<p>我们根据这个理解和上面的例子先来写一下</p>
+<pre><code class="language-js">Function.prototype.myCall = function (context) {
+  //这里得this指向得showName函数
+  console.log(this)
+  //context指得就是传进来得obj对象，也就是我们指定得this值
+  console.log(context)
+}
+Person.prototype.showName.myCall(obj)
+</code></pre>
+<p>这里我们先想一下，为什么this的指向指得是<code>showName</code>函数对象呢？</p>
+<p>首先我们要明白this的指向，this永远指向最后调用它的那个对象，<code>Person.prototype.showName.myCall(obj)</code></p>
+<p><code>myCall</code>最后就是被<code>showName</code>方法来调用的，明白了吗？下面我们继续</p>
+<pre><code class="language-js">Function.prototype.myCall = function (context) {
+  //这里得this指向得showName函数
+  console.log(this)
+  //context指得就是传进来得obj对象，也就是我们指定得this值
+  console.log(context)
+  //传输obj的对象上添加调用的方法
+  context.fn = this
+  //执行fn
+  context.fn()
+}
+
+Person.prototype.showName.myCall(obj)  //herry
+</code></pre>
+<p>awesome！这么简单的吗？ 其实并不是，主要是我们上文这个例子太理想化了，考虑得并不全面，就拿我们上述求数组得最大值和最小值用这个方法都通不过。</p>
+<ol>
+<li>要考虑call传递参数个数得问题，可能是多个，也可能不传递参数</li>
+<li>如果是多参数要把参数传给扩展方法</li>
+</ol>
+<pre><code class="language-js">Function.prototype.myCall = function (context) {
+  //如果没有参数context指向得是window
+  context = context || window
+  //传输obj的对象上添加调用的方法，这里this得指向是max
+  context.fn = this
+  //处理参数 去除第一个参数this 其它传入fn函数
+  let arg = [...arguments].slice(1)
+  //执行fn
+  let result = context.fn(...arg)
+  //删除fn
+  delete context.fn
+  //返回执行结果
+  return result
+}
+console.log(Math.max.myCall(Math, 34, 5, 3, 6, 54, 6, -67, 5, 7, 6, -8, 687)) //687
+</code></pre>
+<h3 id="手写apply">手写apply</h3>
+<p>上文中我们已经说了 apply和call作用其实是一样的，就是传递参数不一样，apply传递得是参数，所以稍微修改一下即可</p>
+<pre><code class="language-js">Function.prototype.myApply = function (context) {
+  //如果没有参数context指向得是window
+  context = context || window
+  //传输obj的对象上添加调用的方法，这里this得指向是max
+  context.fn = this
+  let result
+  if (arguments[1]) {
+    result = context.fn(...arguments[1])
+  } else {
+    result = context.fn()
+  }
+  delete context.fn
+  return result
+}
+
+console.log(Math.max.myApply(Math, [34, 5, 3, 6, 54, 6, -67, 5, 7, 6, -8, 687])) //687
+</code></pre>
+<h3 id="手写bind">手写bind</h3>
+<p>bind返回得是函数，不立即执行</p>
+<pre><code class="language-js">Function.prototype.myBind = function (context) {
+  //返回一个绑定得this，保存this
+  let _this = this
+  let arg = [...arguments].slice(1)
+  //返回一个函数
+  return function F() {
+    // 处理函数使用new的情况
+    if (this instanceof F) {
+      return new _this(...arg, ...arguments)
+    } else {
+      // 返回函数绑定this，传入两次保存的参数
+      //考虑返回函数有返回值做了return
+      return _this.apply(context, arg.concat(...arguments))
+    }
+  }
+}
+console.log(Math.max.myBind(Math, 34, 5, 3, 6, 54, 6, -67, 5, 7, 6, -8, 687)())
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://herryle.github.io/ruKEtmUhw/" class="post-title gt-a-link">
+                    WebSocket入门
+                </a>
+            </div>
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">万物之中，希望至美</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/herryle" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a href="https://herryle.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+</div>
+</body>
+</html>
